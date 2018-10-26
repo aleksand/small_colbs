@@ -18,7 +18,7 @@
 #define BUTTON_FOUR A2
 #define BUTTON_START A4
 
-
+#define LED_STATUS 13 //4
 
 ChainableLED leds(3, 2, NUM_LEDS);
 
@@ -39,12 +39,15 @@ void setup()
   pinMode(LAMP_FIVE, OUTPUT);
   pinMode(LAMP_SIX, OUTPUT);
   pinMode(RELAY_ONE, OUTPUT);
+  pinMode(LED_STATUS, OUTPUT);
 
   pinMode(BUTTON_ONE, INPUT_PULLUP);
   pinMode(BUTTON_TWO, INPUT_PULLUP);
   pinMode(BUTTON_THREE, INPUT_PULLUP);
   pinMode(BUTTON_FOUR, INPUT_PULLUP);
   pinMode(BUTTON_START, INPUT_PULLUP);
+
+  digitalWrite(LED_STATUS, LOW);
 
   debouncerOne.attach(BUTTON_ONE);
   debouncerOne.interval(30);
@@ -62,6 +65,8 @@ void setup()
   debouncerStart.interval(30);
 
   leds.init();
+
+  
 }
 
 byte pos = 0;
